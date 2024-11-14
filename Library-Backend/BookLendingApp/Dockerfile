@@ -1,11 +1,10 @@
-FROM eclipse-temurin:17-jdk-focal
+FROM maven:3.8.4-openjdk-17-slim
 
 WORKDIR /app
 
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
-RUN ./mvnw dependency:go-offline
-RUN ./mvnw clean test
+COPY pom.xml ./
 COPY src ./src
 
-CMD ./mvnw clean test && ./mvnw spring-boot:run
+RUN mvn dependency:go-offline
+
+CMD ["mvn", "spring-boot:run"]
