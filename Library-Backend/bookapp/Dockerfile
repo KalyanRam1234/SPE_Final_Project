@@ -1,13 +1,15 @@
-FROM eclipse-temurin:17-jdk-focal
+FROM maven
 
 WORKDIR /app
 
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
-RUN chmod +x ./mvnw
-RUN ./mvnw dependency:go-offline
-RUN ./mvnw clean test
+# COPY .mvn/ .mvn
+# COPY mvnw pom.xml ./
+# RUN chmod +x ./mvnw
+# RUN ./mvnw dependency:go-offline
+# RUN ./mvnw clean test
 
-COPY src ./src
+# COPY src ./src
 
-CMD ./mvnw clean test && ./mvnw spring-boot:run
+COPY ./target/bookapp-0.0.1-SNAPSHOT.jar ./
+
+CMD mvn spring-boot:run
