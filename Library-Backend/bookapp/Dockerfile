@@ -1,15 +1,10 @@
-FROM maven
+FROM maven:3.8.4-openjdk-17-slim
 
 WORKDIR /app
 
-# COPY .mvn/ .mvn
-# COPY mvnw pom.xml ./
-# RUN chmod +x ./mvnw
-# RUN ./mvnw dependency:go-offline
-# RUN ./mvnw clean test
+COPY pom.xml ./
+COPY src ./src
 
-# COPY src ./src
+RUN mvn dependency:go-offline
 
-COPY ./target/bookapp-0.0.1-SNAPSHOT.jar ./
-
-CMD mvn spring-boot:run
+CMD ["mvn", "spring-boot:run"]
