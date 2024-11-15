@@ -1,0 +1,39 @@
+server:
+  port: 5000
+
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.MySQL5Dialect
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+
+  servlet:
+    multipart:
+      enabled: true
+      # Threshold after which files are written to disk.
+      file-size-threshold: 2KB
+      # Max file size.
+      max-file-size: 10MB
+      # Max Request Size
+      max-request-size: 15MB
+
+springdoc:
+  swagger-ui:
+    path: /docs
+
+# amazonProperties:
+#   accessKey: ${AWS_ACCESS_KEY}
+#   secretKey: ${AWS_SECRET_KEY}
+#   region: ${AWS_REGION}
+#   bucketName: ${AWS_S3_BUCKETNAME}
+#   endpointUrl: ${AWS_S3_ENDPOINT}
