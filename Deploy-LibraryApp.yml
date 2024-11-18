@@ -21,4 +21,4 @@
       shell: docker-compose -p libraryapp pull
 
     - name: Run the container
-      shell: docker-compose up
+      shell: docker-compose -p libraryapp up
