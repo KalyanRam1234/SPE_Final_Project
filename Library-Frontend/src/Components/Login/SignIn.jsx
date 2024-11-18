@@ -1,4 +1,4 @@
-import { Button } from "@material-tailwind/react"
+// import { Button } from "@material-tailwind/react"
 import { useEffect } from "react";
 import { useState } from "react"
 import { Link ,useNavigate} from "react-router-dom"
@@ -104,7 +104,7 @@ export const SignIn=()=>{
                     */}
 
                     <div className="flex justify-center mt-12">
-                        <Button className="bg-blue-250 w-full rounded-xl py-4" onClick={handleSubmit}>Login</Button>
+                        <button className="bg-blue-250 w-full rounded-xl py-4 text-white" onClick={handleSubmit}>Login</button>
                     </div>
                     
                     {/* Maybe we could allow librarians to sign up by themselves in the future */}

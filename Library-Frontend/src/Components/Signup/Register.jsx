@@ -1,4 +1,4 @@
-import { Button } from "@material-tailwind/react"
+// import { Button } from "@material-tailwind/react"
 import { Link } from "react-router-dom"
 
 export const Register=()=>{
@@ -44,7 +44,7 @@ export const Register=()=>{
                     </div>
 
                     <div className="flex justify-center mt-12">
-                        <Button className="bg-blue-250 w-full rounded-xl py-4">Register</Button>
+                        <button className="bg-blue-250 w-full rounded-xl py-4">Register</button>
                     </div>
                     
                     

@@ -1,6 +1,6 @@
 'use client';
 import { Modal } from 'flowbite-react';
-import { Button } from '@material-tailwind/react';
+// import { Button } from '@material-tailwind/react';
 import { deleteLibrarian } from '../../API/TransactionApi';
 export const ConfirmLibrarianDelete = ( {email,openModal,setOpenModal}) => {
   
@@ -39,7 +39,7 @@ export const ConfirmLibrarianDelete = ( {email,openModal,setOpenModal}) => {
                 {/* Button to confirm delete */}
                 
                 <div className="flex justify-center mx-auto w-4/5 my-8">
-                    <Button className="bg-blue-550 w-full rounded-xl py-4 text-white" onClick={handleSubmit}>Delete</Button>
+                    <button className="bg-blue-550 w-full rounded-xl py-4 text-white" onClick={handleSubmit}>Delete</button>
                 </div>
 
             </div>

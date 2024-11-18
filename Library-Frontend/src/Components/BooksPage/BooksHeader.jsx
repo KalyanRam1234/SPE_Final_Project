@@ -1,4 +1,4 @@
-import { Button } from "@material-tailwind/react"
+// import { Button } from "@material-tailwind/react"
 import { Link,useNavigate } from "react-router-dom"
 import { Logout } from "../../API/StudentApi"
 export const BooksHeader = ({setSearchBook}) => {
@@ -32,7 +32,7 @@ export const BooksHeader = ({setSearchBook}) => {
                 <div className="mb-6 mt-10 flex">
                     <div className="flex-auto px-6">
                         <Link to={`/addbook`}>
-                            <Button className="bg-[#F9D745] rounded-2xl px-8 text-black">Add</Button>
+                            <button className="bg-[#F9D745] rounded-2xl px-8 text-black">Add</button>
                         </Link>
                     </div>
                     <div className="flex">

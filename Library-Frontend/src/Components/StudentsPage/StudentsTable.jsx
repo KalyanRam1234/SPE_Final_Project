@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react"
-import { Button } from "@material-tailwind/react"
+// import { Button } from "@material-tailwind/react"
 import { Link } from "react-router-dom"
 import { fetchStudents } from "../../API/StudentApi"
 import { ConfirmStudentDeleteModal } from "./ConfirmStudentDeleteModal"
@@ -65,7 +65,7 @@ export const StudentTable=({searchStudent})=>{
                         <div className="  col-span-4 md:col-span-3 lg:col-span-2 flex-col my-auto pr-2">
                             <div className="flex md:justify-center ,md:items-center justify-end items-end">
                                {/* Navigating to the student details page of the current student */}
-                               <Link to={`/studentdetails/${lib.rollNo}`}><Button className="bg-blue-550 normal-case text-[10px] xl:text-sm font-normal rounded-2xl py-2 ">See Books</Button></Link> 
+                               <Link to={`/studentdetails/${lib.rollNo}`}><button className="bg-blue-550 normal-case text-[10px] xl:text-sm font-normal rounded-2xl py-2 ">See Books</button></Link> 
                             </div>
                             <div className="flex md:justify-center md:items-center justify-end items-end mr-6 md:mr-0 mt-1">
                                 <img src="/images/Pen.png" className="hover:cursor-pointer contain my-auto xl:mr-6 mr-4 md:scale-100 scale-75 " onClick={()=>{

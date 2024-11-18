@@ -1,6 +1,6 @@
 import React from 'react'
 import { Modal } from 'flowbite-react';
-import { Button } from '@material-tailwind/react';
+// import { Button } from '@material-tailwind/react';
 import { useState, useEffect } from 'react';
 import { updateBook } from '../../API/baseApi';
 
@@ -120,7 +120,7 @@ export default function UpdateBookModal({details,openModal,setOpenModal}) {
                         </div>
 
                         <div className="flex justify-center mx-auto w-4/5 mt-6 mb-6">
-                            <Button className="bg-blue-550 w-full rounded-xl py-4 text-white" onClick={handleSubmit}>Update</Button>
+                            <button className="bg-blue-550 w-full rounded-xl py-4 text-white" onClick={handleSubmit}>Update</button>
                         </div>
                         
                     </form>

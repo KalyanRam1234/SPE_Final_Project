@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Button } from "@material-tailwind/react"
+// import { Button } from "@material-tailwind/react"
 import { Link } from "react-router-dom"
 import { fetchBooks } from "../../API/baseApi";
 import {ConfirmDeleteModal} from "./ConfirmDeleteModal";
@@ -67,7 +67,7 @@ export const BooksTable = ({searchBooks}) => {
                         <div className="  col-span-4 md:col-span-3 lg:col-span-2 flex-col my-auto pr-2">
                             <div className="flex md:justify-center md:items-center justify-end items-end">
                                 {/* Navigating to the book details page of the current book */}
-                                <Link to={`/bookdetails/${book.code}`}><Button className="bg-blue-550 normal-case text-[10px] xl:text-sm font-normal rounded-2xl py-2 "> See Students</Button></Link>
+                                <Link to={`/bookdetails/${book.code}`}><button className="bg-blue-550 normal-case text-[10px] xl:text-sm font-normal rounded-2xl py-2 "> See Students</button></Link>
                             </div>
 
                             <div className="flex md:justify-center md:items-center justify-end items-end mr-8 md:mr-0 mt-1">

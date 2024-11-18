@@ -1,7 +1,7 @@
 'use client';
 
 import { Modal } from 'flowbite-react';
-import { Button } from '@material-tailwind/react';
+// import { Button } from '@material-tailwind/react';
 import { useState,useRef } from 'react';
 import { lendBook } from '../../API/TransactionApi';
 
@@ -35,7 +35,7 @@ export const AddBookModal=({rollNo})=> {
   return (
     <>
       {/* Button to display the modal to enter a book code to lend the book to a student */}
-      <Button className="bg-[#F9D745] text-blue-550 rounded-3xl normal-case font-normal  text-[10px] md:text-sm xl:text-[16px] py-2" onClick={() => setOpenModal('default')}>Add Book</Button>
+      <button className="bg-[#F9D745] text-blue-550 rounded-3xl normal-case font-normal  text-[10px] md:text-sm xl:text-[16px] py-2" onClick={() => setOpenModal('default')}>Add Book</button>
 
        {/* Modal once displayed */}
       <Modal show={openModal === 'default'} onClose={() => setOpenModal(undefined)} size="sm"  >
@@ -67,7 +67,7 @@ export const AddBookModal=({rollNo})=> {
                   </div>
                   
                   <div className="flex justify-center mx-auto w-4/5 my-8">
-                      <Button className="bg-blue-550 w-full rounded-xl py-4 text-white" onClick={handleSubmit}>Add</Button>
+                      <button className="bg-blue-550 w-full rounded-xl py-4 text-white" onClick={handleSubmit}>Add</button>
                   </div>
 
               </div>

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { getLibrarian } from "../../API/TransactionApi"
 import { ConfirmLibrarianDelete } from "./ConfirmLibrarianDelete";
 import { Link } from "react-router-dom";
-import { Button } from "@material-tailwind/react";
+// import { Button } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 export const AdLibTable = () => {
     
@@ -29,7 +29,7 @@ export const AdLibTable = () => {
             <div className="flex  text-2xl font-bold text-white border-gray-400 border-b-2 pb-4 ">
                 <div className="flex-auto">Librarians</div>
                 <div>      
-                    <Button className="bg-[#F9D745] text-blue-550 rounded-3xl normal-case font-normal  text-[10px] md:text-sm xl:text-[16px] md:py-2 py-0" onClick={()=>{navigate("/dashboard")}}>Return</Button>
+                    <button className="bg-[#F9D745] text-blue-550 rounded-3xl normal-case font-normal  text-[10px] md:text-sm xl:text-[16px] md:py-2 py-0" onClick={()=>{navigate("/dashboard")}}>Return</button>
                 </div>
             </div>
 

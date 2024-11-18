@@ -1,6 +1,6 @@
 'use client';
 import { Modal } from 'flowbite-react';
-import { Button } from '@material-tailwind/react';
+// import { Button } from '@material-tailwind/react';
 import { deleteStudent } from '../../API/StudentApi';
 
 export const ConfirmStudentDeleteModal = ({rollNo,openModal,setOpenModal}) => {
@@ -37,7 +37,7 @@ export const ConfirmStudentDeleteModal = ({rollNo,openModal,setOpenModal}) => {
                 </div>
                 
                 <div className="flex justify-center mx-auto w-4/5 my-8">
-                    <Button className="bg-blue-550 w-full rounded-xl py-4 text-white" onClick={handleSubmit}>Confirm Delete</Button>
+                    <button className="bg-blue-550 w-full rounded-xl py-4 text-white" onClick={handleSubmit}>Confirm Delete</button>
                 </div>
 
             </div>

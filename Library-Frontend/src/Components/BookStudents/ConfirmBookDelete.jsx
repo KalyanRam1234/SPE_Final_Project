@@ -1,6 +1,6 @@
 'use client';
 import { Modal } from 'flowbite-react';
-import { Button } from '@material-tailwind/react';
+// import { Button } from '@material-tailwind/react';
 import { returnBook } from '../../API/TransactionApi';
 export const ConfirmBookDelete = ( {id,openModal,setOpenModal}) => {
   
@@ -37,7 +37,7 @@ export const ConfirmBookDelete = ( {id,openModal,setOpenModal}) => {
                 </div>
                 
                 <div className="flex justify-center mx-auto w-4/5 my-8">
-                    <Button className="bg-blue-550 w-full rounded-xl py-4 text-white" onClick={handleSubmit}>Confirm Return</Button>
+                    <button className="bg-blue-550 w-full rounded-xl py-4 text-white" onClick={handleSubmit}>Confirm Return</button>
                 </div>
 
             </div>

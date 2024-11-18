@@ -1,4 +1,4 @@
-import { Button } from "@material-tailwind/react"
+// import { Button } from "@material-tailwind/react"
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AddedBookMessageDialog } from "./AddedBookMessageModal";
@@ -123,11 +123,11 @@ export const AddBook = () => {
 
                         <div className="flex justify-center mx-auto w-4/5 mt-12 mb-3">
                             {/* Adding the new book */}
-                            <Button className="bg-[#F9D745] lg:bg-blue-550 w-full rounded-xl py-4 text-blue-550 lg:text-white" onClick={handleSubmit}>Add</Button>
+                            <button className="bg-[#F9D745] lg:bg-blue-550 w-full rounded-xl py-4 text-blue-550 lg:text-white" onClick={handleSubmit}>Add</button>
                         </div>
                         <div className="flex justify-center mx-auto w-4/5 mt-6 mb-3">
                             {/* Button to go back to the books page */}
-                            <Link to={`/books`}><Button className="bg-[#F9D745]  lg:hidden  rounded-xl py-4 text-blue-550 ">Return</Button></Link>
+                            <Link to={`/books`}><button className="bg-[#F9D745]  lg:hidden  rounded-xl py-4 text-blue-550 ">Return</button></Link>
                         </div>
                         
                     </form>

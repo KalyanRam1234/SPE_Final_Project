@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { Button } from "@material-tailwind/react"
+// import { Button } from "@material-tailwind/react"
 import { AddBookModal } from "./AddBookModal"
 import { getLendedBooks } from "../../API/TransactionApi"
 import { ConfirmBookDelete } from "./ConfirmBookDelete"
@@ -24,7 +24,7 @@ export const StudentBooksTable = ({id,searchBook}) => {
             <div className="flex  text-2xl font-bold text-white border-gray-400 border-b-2 pb-4 ">
                 <div className="flex-auto">Books List</div>
                 <div>      
-                    <Button className="bg-[#F9D745] text-blue-550 rounded-3xl normal-case font-normal  text-[10px] md:text-sm xl:text-[16px] md:py-2 py-0" onClick={()=>{navigate("/students")}}>Return</Button>
+                    <button className="bg-[#F9D745] text-blue-550 rounded-3xl normal-case font-normal  text-[10px] md:text-sm xl:text-[16px] md:py-2 py-0" onClick={()=>{navigate("/students")}}>Return</button>
                 </div>
             </div>
 

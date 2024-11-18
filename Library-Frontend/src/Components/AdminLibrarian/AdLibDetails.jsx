@@ -1,4 +1,4 @@
-import { Button } from "@material-tailwind/react"
+// import { Button } from "@material-tailwind/react"
 import { useState } from "react"
 import { addLibrarian } from "../../API/TransactionApi";
 import { useNavigate } from "react-router-dom";
@@ -113,7 +113,7 @@ export const AdLibDetails=()=>{
                         
 
                         <div className="flex justify-center mx-auto w-4/5 mt-12 mb-3">
-                            <Button className="bg-[#F9D745] lg:bg-blue-550 w-full rounded-xl py-4 text-blue-550 lg:text-white" onClick={handleSubmit}>Add</Button>
+                            <button className="bg-[#F9D745] lg:bg-blue-550 w-full rounded-xl py-4 text-blue-550 lg:text-white" onClick={handleSubmit}>Add</button>
                         </div>
                         
                     </form>
