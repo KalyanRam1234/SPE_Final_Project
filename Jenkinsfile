@@ -27,7 +27,7 @@ pipeline{
         
         stage("Stage 4 : Clean Unwanted Docker Images"){
             steps{
-                sh "docker-compose -p libaryapp down --rmi all --volumes --remove-orphans"
+                sh "docker-compose -p libraryapp down --rmi all --volumes --remove-orphans"
             }
         }
         
