@@ -1,7 +1,7 @@
 services:
   # MySQL database service
   db:
-    image: kalyanramm237/db:latest
+    image: mysql:latest
     restart: always
     environment:
       MYSQL_DATABASE: test
