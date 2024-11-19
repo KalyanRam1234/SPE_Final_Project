@@ -21,7 +21,7 @@ pipeline{
         stage("Stage 3 : Push to Dockerhub"){
             steps{
                 sh 'echo $DOCKERHUB_CRED_PSW | docker login -u $DOCKERHUB_CRED_USR --password-stdin'
-                sh "docker-compose push"
+                sh "docker-compose -p libraryapp push"
             }
         }
         
@@ -30,14 +30,24 @@ pipeline{
                 sh "docker-compose -p libraryapp down --rmi all --volumes --remove-orphans"
             }
         }
+        stage("Stage 5: Prepare Docker Compose File") {
+            steps {
+                archiveArtifacts artifacts: 'docker-compose.yml', allowEmptyArchive: false
+                sh 'echo "Workspace location is $WORKSPACE"'
+                sh 'ls -l $WORKSPACE' 
+            }
+        }
         
-        stage('Stage 5 : Ansible Deployment') {
+        stage('Stage 6 : Ansible Deployment') {
             steps {
                 ansiblePlaybook colorized: true,
                 credentialsId: 'localhost',
                 installation: 'Ansible',
                 inventory: 'inventory',
-                playbook: 'Deploy-LibraryApp.yml'
+                playbook: 'Deploy-LibraryApp.yml',
+                extraVars: [
+                    workspace: "${env.WORKSPACE}"
+                ]
             }
         }
     }

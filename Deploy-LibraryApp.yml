@@ -17,8 +17,22 @@
       args:
         executable: /bin/bash
 
-    - name: Pull Image
-      shell: docker-compose pull
+    # - name: Pull Image
+    #   shell: docker-compose pull
 
-    - name: Run the container
-      shell: docker-compose -p libraryapp up
+    # - name: Run the container
+    #   shell: docker-compose -p libraryapp up
+    - name: Copy docker-compose.yml to target machine
+      copy:
+        src: "{{ workspace }}/docker-compose.yml"
+        dest: /opt/libraryapp/docker-compose.yml
+
+    - name: Pull Docker images
+      shell: docker-compose -f /opt/libraryapp/docker-compose.yml pull
+      args:
+        chdir: /opt/libraryapp
+
+    - name: Run Docker containers
+      shell: docker-compose -p libraryapp -f /opt/libraryapp/docker-compose.yml up -d
+      args:
+        chdir: /opt/libraryapp
