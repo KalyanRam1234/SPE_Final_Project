@@ -21,7 +21,7 @@ pipeline{
         stage("Stage 3 : Push to Dockerhub"){
             steps{
                 sh 'echo $DOCKERHUB_CRED_PSW | docker login -u $DOCKERHUB_CRED_USR --password-stdin'
-                sh "docker-compose -p libraryapp push"
+                sh "docker-compose push"
             }
         }
         
