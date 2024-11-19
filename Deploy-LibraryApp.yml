@@ -18,7 +18,7 @@
         executable: /bin/bash
 
     - name: Pull Image
-      shell: docker-compose -p libraryapp pull
+      shell: docker-compose pull
 
     - name: Run the container
       shell: docker-compose -p libraryapp up
