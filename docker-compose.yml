@@ -9,9 +9,7 @@ services:
     ports:
       - 3305:3306
     volumes:
-      - type: volume
-        source: mysql-data
-        target: /var/lib/mysql
+      - ./mysql-data:/var/lib/mysql
 
   # Book application backend service
   bookapp:
