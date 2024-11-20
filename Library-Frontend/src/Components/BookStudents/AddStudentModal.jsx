@@ -43,7 +43,7 @@ export const AddStudentModal=({bookCode})=> {
     <>
       {/* Button to display the modal to lend a book to a student */}
       
-      <button className="bg-[#F9D745] text-blue-550 rounded-3xl normal-case font-normal  text-[10px] md:text-sm xl:text-[16px] py-2" onClick={() => setOpenModal('default')}>Add Student</button>
+      <button className="bg-[#F9D745] text-blue-550 rounded-2xl normal-case font-normal text-sm xl:text-[16px] py-2 px-3" onClick={() => setOpenModal('default')}>Add Student</button>
       
       {/* Modal once displayed */}
     

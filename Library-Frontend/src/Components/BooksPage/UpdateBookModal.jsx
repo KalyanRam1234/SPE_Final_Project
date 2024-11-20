@@ -96,24 +96,24 @@ export default function UpdateBookModal({details,openModal,setOpenModal}) {
                         {/* New Fields */}
 
                         {/* Book code cannot be updated */}
-                        <div className="mt-4 w-4/5 mx-auto">
+                        <div className="mt-4 w-4/5 mx-auto ">
                             <div className="text-sm text-gray-600 ">Book Code</div>
                             <input type="text" className="border-0 border-b-2  border-black text-[16px] mt-1  focus:ring-0 focus:border-black px-0 placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter roll number" disabled defaultValue={details?.code}/>
                         </div>
 
-                        <div className=" w-4/5 mx-auto">
+                        <div className="mt-2 w-4/5 mx-auto">
                             <div className="text-sm text-gray-600 ">Title</div>
                             <input type="text" className="border-0 border-b-2  border-black text-[16px] mt-1  focus:ring-0 focus:border-black px-0 placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter book title" defaultValue={title} onBlur={handleTitleChange}  />
                             <div className="mt-1 text-red-600 text-sm">{errortitle}</div>
                         </div>
 
-                        <div className="mt-4 w-4/5 mx-auto">
+                        <div className="mt-2 w-4/5 mx-auto">
                             <div className="text-sm text-gray-600 ">Author</div>
-                            <input type="author" className="border-0 border-b-2  border-black text-[16px] mt-1  focus:ring-0 focus:border-black px-0 placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter book author" defaultValue={author} onBlur={handleAuthorChange}/>
+                            <input type="text" className="border-0 border-b-2  border-black text-[16px] mt-1  focus:ring-0 focus:border-black px-0 placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter book title" defaultValue={author} onBlur={handleAuthorChange}  />
                             <div className="mt-1 text-red-600 text-sm">{errorauthor}</div>
                         </div>
 
-                        <div className="mt-4 w-4/5 mx-auto">
+                        <div className="mt-2 w-4/5 mx-auto">
                             <div className="text-sm text-gray-600 ">Description</div>
                             <input type="text" className="border-0 border-b-2  border-black text-[16px] mt-1  focus:ring-0 focus:border-black px-0 placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter book description" defaultValue={desc} onBlur={handleDescChange}/>
                             <div className="mt-1 text-red-600 text-sm">{errordesc}</div>
