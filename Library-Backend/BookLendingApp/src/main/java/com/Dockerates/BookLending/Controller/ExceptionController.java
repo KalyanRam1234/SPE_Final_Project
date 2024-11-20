@@ -59,7 +59,7 @@ public class ExceptionController extends ResponseEntityExceptionHandler { //Glob
 
     @ExceptionHandler(UserWrongPasswordException.class)
     public ResponseEntity<ErrorMessage> handleUserWrongPasswordException(UserWrongPasswordException exception){
-        ErrorMessage message=new ErrorMessage(HttpStatus.BAD_REQUEST,"Wrong password for this user.");
+        ErrorMessage message=new ErrorMessage(HttpStatus.BAD_REQUEST,"Invalid Username or Password entered");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(message);
     }
 }

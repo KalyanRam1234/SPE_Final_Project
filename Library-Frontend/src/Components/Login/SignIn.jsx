@@ -43,7 +43,13 @@ export const SignIn=()=>{
                     password: password
                 }
             )
-            if(p) navigate("/dashboard")
+            if(p==true) navigate("/dashboard")
+            else {
+                alert(p);
+            }
+            // else {
+            //     console.log(p);
+            // }
         }
 
        

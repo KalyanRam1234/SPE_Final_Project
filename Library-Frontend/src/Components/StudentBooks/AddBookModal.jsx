@@ -35,7 +35,7 @@ export const AddBookModal=({rollNo})=> {
   return (
     <>
       {/* Button to display the modal to enter a book code to lend the book to a student */}
-      <button className="bg-[#F9D745] text-blue-550 rounded-3xl normal-case font-normal  text-[10px] md:text-sm xl:text-[16px] py-2" onClick={() => setOpenModal('default')}>Add Book</button>
+      <button className="bg-[#F9D745] text-blue-550 rounded-3xl normal-case font-normal text-sm xl:text-[16px] py-2 px-3" onClick={() => setOpenModal('default')}>Add Book</button>
 
        {/* Modal once displayed */}
       <Modal show={openModal === 'default'} onClose={() => setOpenModal(undefined)} size="sm"  >

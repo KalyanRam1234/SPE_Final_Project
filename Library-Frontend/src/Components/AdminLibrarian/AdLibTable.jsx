@@ -29,7 +29,7 @@ export const AdLibTable = () => {
             <div className="flex  text-2xl font-bold text-white border-gray-400 border-b-2 pb-4 ">
                 <div className="flex-auto">Librarians</div>
                 <div>      
-                    <button className="bg-[#F9D745] text-blue-550 rounded-3xl normal-case font-normal  text-[10px] md:text-sm xl:text-[16px] md:py-2 py-0" onClick={()=>{navigate("/dashboard")}}>Return</button>
+                    <button className="bg-[#F9D745] text-blue-550 rounded-2xl normal-case font-normal px-3 text-sm xl:text-[16px] py-2" onClick={()=>{navigate("/dashboard")}}>Return</button>
                 </div>
             </div>
 

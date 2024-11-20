@@ -65,7 +65,7 @@ export const StudentTable=({searchStudent})=>{
                         <div className="  col-span-4 md:col-span-3 lg:col-span-2 flex-col my-auto pr-2">
                             <div className="flex md:justify-center ,md:items-center justify-end items-end">
                                {/* Navigating to the student details page of the current student */}
-                               <Link to={`/studentdetails/${lib.rollNo}`}><button className="bg-blue-550 normal-case text-[10px] xl:text-sm font-normal rounded-2xl py-2 ">See Books</button></Link> 
+                               <Link to={`/studentdetails/${lib.rollNo}`}><button className="bg-blue-550 text-white normal-case text-[10px] md:text-sm font-normal rounded-2xl px-3 py-2 ">See Books</button></Link> 
                             </div>
                             <div className="flex md:justify-center md:items-center justify-end items-end mr-6 md:mr-0 mt-1">
                                 <img src="/images/Pen.png" className="hover:cursor-pointer contain my-auto xl:mr-6 mr-4 md:scale-100 scale-75 " onClick={()=>{

@@ -67,7 +67,7 @@ export const BooksTable = ({searchBooks}) => {
                         <div className="  col-span-4 md:col-span-3 lg:col-span-2 flex-col my-auto pr-2">
                             <div className="flex md:justify-center md:items-center justify-end items-end">
                                 {/* Navigating to the book details page of the current book */}
-                                <Link to={`/bookdetails/${book.code}`}><button className="bg-blue-550 normal-case text-[10px] xl:text-sm font-normal rounded-2xl py-2 "> See Students</button></Link>
+                                <Link to={`/bookdetails/${book.code}`}><button className="bg-blue-550 normal-case text-[10px] md:text-sm font-normal rounded-2xl py-2 px-3 text-white "> See Students</button></Link>
                             </div>
 
                             <div className="flex md:justify-center md:items-center justify-end items-end mr-8 md:mr-0 mt-1">
