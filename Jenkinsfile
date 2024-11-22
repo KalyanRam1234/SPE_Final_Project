@@ -15,20 +15,20 @@ pipeline{
         stage("Stage 2: Docker Compose Build") {
             steps {
                 echo 'Building Docker containers...'
-                sh '/usr/local/bin/docker compose -p libraryapp build'
+                sh 'docker compose -p libraryapp build'
             }
         }
         
         stage("Stage 3 : Push to Dockerhub"){
             steps{
-                sh 'echo $DOCKERHUB_CRED_PSW | /usr/local/bin/docker login -u $DOCKERHUB_CRED_USR --password-stdin'
-                sh "/usr/local/bin/docker compose -p libraryapp push"
+                sh 'echo $DOCKERHUB_CRED_PSW | docker login -u $DOCKERHUB_CRED_USR --password-stdin'
+                sh "docker compose -p libraryapp push"
             }
         }
         
         stage("Stage 4 : Clean Unwanted Docker Images"){
             steps{
-                sh "/usr/local/bin/docker compose -p libraryapp down --rmi all --volumes --remove-orphans"
+                sh "docker compose -p libraryapp down --rmi all --volumes --remove-orphans"
             }
         }
         stage("Stage 5: Prepare Docker Compose File") {
@@ -59,7 +59,7 @@ pipeline{
         }
         failure {
             echo 'Pipeline failed. Cleaning up resources...'
-            sh "/usr/local/bin/docker compose -p libraryapp down --rmi all --volumes --remove-orphans || true"
+            sh "docker compose -p libraryapp down --rmi all --volumes --remove-orphans || true"
         }
     }
 }
