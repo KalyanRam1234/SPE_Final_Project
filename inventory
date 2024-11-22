@@ -1,2 +1,2 @@
 [myhosts]
-localhost ansible_connection=local ansible_user=vikaskaly
+localhost ansible_connection=local ansible_ssh_user=vikaskaly
