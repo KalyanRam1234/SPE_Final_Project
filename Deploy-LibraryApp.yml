@@ -20,14 +20,14 @@
     - name: Copy docker-compose.yml to target machine
       copy:
         src: "{{ workspace }}/docker-compose.yml"  # Use Jenkins workspace or specify path
-        dest: "/home/{{ ansible_ssh_user }}/docker-compose.yml"  # Use ansible_ssh_user
+        dest: "/Users/{{ ansible_ssh_user }}/docker-compose.yml"  # Use ansible_ssh_user
 
     - name: Pull Docker images
-      shell: docker compose -f /home/{{ ansible_ssh_user }}/docker-compose.yml pull
+      shell: docker compose -f /Users/{{ ansible_ssh_user }}/docker-compose.yml pull
       args:
-        chdir: "/home/{{ ansible_ssh_user }}"
+        chdir: "/Users/{{ ansible_ssh_user }}"
 
     - name: Run Docker containers
-      shell: docker compose -p libraryapp -f /home/{{ ansible_ssh_user }}/docker-compose.yml up -d
+      shell: docker compose -p libraryapp -f /Users/{{ ansible_ssh_user }}/docker-compose.yml up -d
       args:
-        chdir: "/home/{{ ansible_ssh_user }}"
+        chdir: "/Users/{{ ansible_ssh_user }}"
