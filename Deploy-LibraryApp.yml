@@ -3,10 +3,10 @@
   hosts: all
   
   tasks:
-    - name: Start Docker Service
-      service:
-        name: docker
-        state: started
+    # - name: Start Docker Service
+    #   service:
+    #     name: docker
+    #     state: started
 
     # - name: Install Docker Compose (if not installed)
     #   shell: |

@@ -42,7 +42,6 @@ pipeline{
         stage('Stage 6: Ansible Deployment') {
             steps {
                 script {
-                    // Activate the virtual environment and run ansible-playbook
                     sh '''
                     source ~/base/bin/activate
                     ansible-playbook Deploy-LibraryApp.yml -i inventory -e workspace=${WORKSPACE}
