@@ -1,7 +1,8 @@
 pipeline{
     environment{
-        DOCKERHUB_CRED = credentials("DockerHubCred")
+        DOCKERHUB_CRED = credentials("dockerhub_id")
         GITHUB_REPO_URL = 'https://github.com/KalyanRam1234/SPE_Final_Project.git'
+        PATH = "/opt/homebrew/bin:$PATH" 
     }
     agent any
     stages{
