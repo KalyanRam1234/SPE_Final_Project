@@ -8,7 +8,7 @@ pipeline{
     stages{
         stage("Stage 1 : Git Clone"){
             steps{
-                git branch : 'main', url : "${GITHUB_REPO_URL}"
+                git branch : 'vikas', url : "${GITHUB_REPO_URL}"
             }
         }
         
