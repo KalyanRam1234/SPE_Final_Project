@@ -39,16 +39,15 @@ pipeline{
             }
         }
         
-        stage('Stage 6 : Ansible Deployment') {
+        stage('Stage 6: Ansible Deployment') {
             steps {
-                ansiblePlaybook colorized: true,
-                credentialsId: 'localhost',
-                installation: 'Ansible',
-                inventory: 'inventory',
-                playbook: 'Deploy-LibraryApp.yml',
-                extraVars: [
-                    workspace: "${env.WORKSPACE}"
-                ]
+                script {
+                    // Activate the virtual environment and run ansible-playbook
+                    sh '''
+                    source ~/base/bin/activate
+                    ansible-playbook Deploy-LibraryApp.yml -i inventory -e workspace=${WORKSPACE}
+                    '''
+                }
             }
         }
     }
