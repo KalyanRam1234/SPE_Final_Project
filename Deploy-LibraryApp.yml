@@ -1,9 +1,6 @@
 ---
 - name: Pull Docker Image of Library App
   hosts: all
-
-   vars:
-    ansible_python_interpreter: /Users/vikaskaly/base/bin/python
   
   tasks:
     - name: Start Docker Service
