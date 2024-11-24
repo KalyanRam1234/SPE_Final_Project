@@ -1,2 +1,2 @@
 [myhosts]
-localhost ansible_ssh_user=vboxuser ansible_ssh_pass=Kalyan
+localhost ansible_ssh_user=vboxuser ansible_ssh_pass=Fiitjeebaba
