@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: booklendingapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: booklendingapp
+  template:
+    metadata:
+      labels:
+        app: booklendingapp
+    spec:
+      containers:
+      - name: booklendingapp
+        image: vikaskaly/booklendingapp:latest
+        ports:
+        - containerPort: 5001
+        resources:
+          limits:
+            cpu: "1"
+            memory: 512Mi
+          requests:
+            cpu: 500m
+            memory: 256Mi

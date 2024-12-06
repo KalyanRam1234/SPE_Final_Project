@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: booklendingapp-svc
+spec:
+  type: LoadBalancer
+  selector:
+    app: booklendingapp
+  ports:
+    - protocol: TCP
+      port: 5001
+      targetPort: 5001

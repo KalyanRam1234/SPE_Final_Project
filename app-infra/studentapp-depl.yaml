@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: studentapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: studentapp
+  template:
+    metadata:
+      labels:
+        app: studentapp
+    spec:
+      containers:
+      - name: studentapp
+        image: vikaskaly/studentapp:latest
+        ports:
+        - containerPort: 8081
+        resources:
+          limits:
+            cpu: "1"
+            memory: 512Mi
+          requests:
+            cpu: 500m
+            memory: 256Mi
