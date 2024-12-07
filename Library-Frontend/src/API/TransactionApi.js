@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BookLendingAppUrl="http://localhost:5001"
+const BookLendingAppUrl="http://booklendingapp.example.com:5001"
 
 const axiosInstance = axios.create({
     withCredentials: true,
