@@ -14,13 +14,13 @@ spec:
     spec:
       containers:
       - name: studentapp
-        image: vikaskaly/studentapp:latest
+        image: kalyanramm237/studentapp:latest
         ports:
         - containerPort: 8081
         resources:
           limits:
             cpu: "1"
-            memory: 1024Mi
+            memory: 512Mi
           requests:
             cpu: 500m
             memory: 256Mi

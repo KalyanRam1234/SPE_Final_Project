@@ -14,13 +14,13 @@ spec:
     spec:
       containers:
       - name: bookapp
-        image: vikaskaly/bookapp:latest
+        image: kalyanramm237/bookapp:latest
         ports:
         - containerPort: 8082
         resources:
           limits:
             cpu: "1"
-            memory: 1024Mi
+            memory: 512Mi
           requests:
             cpu: 500m
             memory: 256Mi

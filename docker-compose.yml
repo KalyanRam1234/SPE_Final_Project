@@ -14,7 +14,7 @@ services:
   # Book application backend service
   bookapp:
     build: ./Library-Backend/bookapp
-    image: vikaskaly/bookapp:latest
+    image: kalyanramm237/bookapp:latest
     ports:
       - 8082:8082
     depends_on:
@@ -23,7 +23,7 @@ services:
   # Student application backend service
   studentapp:
     build: ./Library-Backend/studentapp
-    image: vikaskaly/studentapp:latest
+    image: kalyanramm237/studentapp:latest
     ports:
       - 8081:8081
     depends_on:
@@ -32,7 +32,7 @@ services:
   # Book lending application service
   booklendingapp:
     build: ./Library-Backend/BookLendingApp
-    image: vikaskaly/booklendingapp:latest
+    image: kalyanramm237/booklendingapp:latest
     ports:
       - 5001:5001
     depends_on:
@@ -43,7 +43,7 @@ services:
   # Frontend application service
   frontend:
     build: ./Library-Frontend
-    image: vikaskaly/frontend:latest
+    image: kalyanramm237/frontend:latest
     ports:
       - 5173:5173
     depends_on:
