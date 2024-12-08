@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: bookapp-ingress
   annotations:
+    kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
@@ -13,6 +14,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: bookapp
+            name: bookapp-svc
             port:
               number: 8082

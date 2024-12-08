@@ -53,7 +53,8 @@ public class BookLendingApplication implements CommandLineRunner{
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-					.allowedOrigins("http://frontend:5173", "http://localhost:5173", "http://localhost:5174")
+					// .allowedOrigins("/**")
+					.allowedOrigins("http://library-frontend-svc:5173","http://frontend.example.com","http://frontend:5173", "http://localhost:5173", "http://localhost:5174")
 					.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
 					.allowedHeaders("*")
 					.allowCredentials(true)
