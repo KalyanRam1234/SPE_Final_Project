@@ -1,0 +1,35 @@
+---
+- name: Pull Docker Image of Library App
+  hosts: myhosts
+  vars_files:
+    - "{{workspace}}/my_vault.yml"
+    
+  tasks:
+    - name: Copy Kubernetes infrastructure folders to target machine
+      copy:
+        src: "{{workspace}}/infra/"  # Source folder
+        dest: "/home/{{ ansible_ssh_user }}/infra/" # Copy to Desktop 
+
+    - name: Provide execution permission
+      shell: chmod 777 /home/{{ ansible_ssh_user }}/infra/*.sh
+
+    - name: Start minikube
+      shell: minikube start --driver=docker
+
+    - name: Cleanup all the existing deployments
+      shell: ./cleanup.sh
+      args:
+        chdir: /home/{{ ansible_ssh_user }}/infra/
+
+    - name: Execute the script to deploy the application
+      shell: ./deploy.sh
+      args:
+        chdir: /home/{{ ansible_ssh_user }}/infra/
+
+    - name: Execute the script to start Ingress
+      shell: ./ingress.sh
+      args:
+        chdir: /home/{{ ansible_ssh_user }}/infra/
+
+    - name: Enable Ingress
+      shell: minikube addons enable ingress

@@ -1,14 +1,14 @@
 pipeline{
     environment{
-        DOCKERHUB_CRED = credentials("dockerhub_id")
+        DOCKERHUB_CRED = credentials("DockerHubCred")
         GITHUB_REPO_URL = 'https://github.com/KalyanRam1234/SPE_Final_Project.git'
-        PATH = "/opt/homebrew/bin:$PATH" 
+        VAULT_CRED = credentials("VaultCred")
     }
     agent any
     stages{
         stage("Stage 1 : Git Clone"){
             steps{
-                git branch : 'vikas', url : "${GITHUB_REPO_URL}"
+                git branch : 'kalyankube', url : "${GITHUB_REPO_URL}"
             }
         }
         
@@ -26,15 +26,15 @@ pipeline{
             }
         }
         
-        // stage("Stage 4 : Clean Unwanted Docker Images"){
-        //     steps{
-        //         sh "docker compose -p libraryapp down --rmi all --volumes --remove-orphans"
-        //     }
-        // }
+        stage("Stage 4 : Clean Unwanted Docker Images"){
+            steps{
+                sh "docker compose -p libraryapp down --rmi all --volumes --remove-orphans"
+            }
+        }
 
         stage("Stage 5: Prepare Docker Compose File") {
             steps {
-                archiveArtifacts artifacts: 'infra/**', allowEmptyArchive: false
+                archiveArtifacts artifacts: 'infra/** , my_vault.yml', allowEmptyArchive: false
                 sh 'echo "Workspace location is $WORKSPACE"'
                 sh 'ls -l $WORKSPACE' 
             }
@@ -44,8 +44,7 @@ pipeline{
             steps {
                 script {
                     sh '''
-                    source ~/base/bin/activate
-                    ansible-playbook Deploy-k8s.yml -i inventory -e workspace=${WORKSPACE}
+                    ansible-playbook Deploy-k8s.yml -i inventory -e workspace=${WORKSPACE} --vault-password-file <(echo "$VAULT_CRED")                    
                     '''
                 }
             }

@@ -15,6 +15,37 @@ spec:
       containers:
       - name: booklendingapp
         image: kalyanramm237/booklendingapp:latest
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-app-secrets
+              key: MYSQL_ROOT_PASSWORD
+        - name: MYSQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: mysql-app-secrets
+              key: MYSQL_DATABASE
+        - name: MYSQL_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-app-secrets
+              key: MYSQL_ROOT_USERNAME
+        - name: APP_ADMIN_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-app-secrets
+              key: APP_ADMIN_USERNAME
+        - name: APP_ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-app-secrets
+              key: APP_ADMIN_PASSWORD
+        - name: APP_ADMIN_EMAIL
+          valueFrom:
+            secretKeyRef:
+              name: mysql-app-secrets
+              key: APP_ADMIN_EMAIL
         ports:
         - containerPort: 5001
         resources:

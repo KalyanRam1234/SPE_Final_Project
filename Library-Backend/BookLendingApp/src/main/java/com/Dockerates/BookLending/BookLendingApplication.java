@@ -2,6 +2,7 @@ package com.Dockerates.BookLending;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,6 +21,19 @@ import com.Dockerates.BookLending.Service.UuidService;
 @SpringBootApplication
 public class BookLendingApplication implements CommandLineRunner{
 
+
+	@Value("${admin.appusername}")
+    private String username;
+
+    @Value("${admin.email}")
+    private String email;
+
+    @Value("${admin.apppassword}")
+    private String password;
+
+    @Value("${admin.role}")
+    private String role;
+	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -28,24 +42,24 @@ public class BookLendingApplication implements CommandLineRunner{
 	}
 	
 	@Override
-    public void run(String... args) throws UserDuplicateEmailException{
-		PasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
-		try{
-			String encodedPassword = passwordEncoder.encode("admin_password");
-			User newUser = User
-                .builder()
+    public void run(String... args) throws Exception {
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        
+        try {
+            String encodedPassword = passwordEncoder.encode(password);
+            User newUser = User.builder()
                 .id(UuidService.getUUID())
-                .username("admin1")
-                .email("admin1@email.com")
+                .username(username)
+                .email(email)
                 .password(encodedPassword)
-                .role(Role.ADMIN)
+                .role(Role.ADMIN)  // Assuming role is an enum
                 .build();
-			
-			userRepository.save(newUser);
-		}catch(Exception ex){
-			System.out.println(ex.getMessage());
-		}
-	}
+
+            userRepository.save(newUser);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
