@@ -44,7 +44,7 @@ pipeline{
             steps {
                 script {
                     sh '''
-                    ansible-playbook Deploy-k8s.yml -i inventory -e workspace=${WORKSPACE} --vault-password-file <(echo "$VAULT_CRED")                    
+                    bash -c 'ansible-playbook Deploy-k8s.yml -i inventory -e workspace=${WORKSPACE} --vault-password-file <(echo "$VAULT_CRED")'                    
                     '''
                 }
             }
