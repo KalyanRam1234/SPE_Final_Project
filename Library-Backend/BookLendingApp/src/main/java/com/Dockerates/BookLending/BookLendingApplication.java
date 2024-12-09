@@ -22,16 +22,16 @@ import com.Dockerates.BookLending.Service.UuidService;
 public class BookLendingApplication implements CommandLineRunner{
 
 
-	@Value("${admin.appusername}")
+	@Value("${appusername}")
     private String username;
 
-    @Value("${admin.email}")
+    @Value("${email}")
     private String email;
 
-    @Value("${admin.apppassword}")
+    @Value("${apppassword}")
     private String password;
 
-    @Value("${admin.role}")
+    @Value("${role}")
     private String role;
 	
 	@Autowired
@@ -42,7 +42,7 @@ public class BookLendingApplication implements CommandLineRunner{
 	}
 	
 	@Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) throws UserDuplicateEmailException {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         
         try {
