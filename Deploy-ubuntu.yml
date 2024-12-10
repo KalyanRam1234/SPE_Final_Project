@@ -2,19 +2,19 @@
 - name: Pull Docker Image of Library App
   hosts: myhosts
   vars_files:
-    - "{{ workspace }}/my_vault.yml"
+    - "./my_vault.yml"
     
   tasks:
     - name: Copy Kubernetes infrastructure folders to target machine
       copy:
-        src: "{{ workspace }}/infra/"  # Source folder
+        src: "./infra/"  # Source folder
         dest: "/home/{{ ansible_ssh_user }}/infra/" # Copy to Desktop 
 
     - name: Provide execution permission
       shell: chmod 777 /home/{{ ansible_ssh_user }}/infra/*.sh
 
     - name: Check Minikube Status
-      shell: minikube status --format='{{.Host}}'
+      shell: minikube status | grep -i "running"
       register: minikube_status
       ignore_errors: true  # Ignore errors if Minikube isn't running
       
