@@ -15,3 +15,5 @@ minikube tunnel
 minikube addons enable ingress
 kubectl port-forward service/loki-grafana 8081:80 -n monitoring
 ```
+
+Monitoring done using Prometheus and Logging done using Grafana and Loki
