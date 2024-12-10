@@ -44,6 +44,7 @@ pipeline{
             steps {
                 script {
                     sh '''
+                    export ANSIBLE_HOST_KEY_CHECKING=False
                     TEMP_VAULT_FILE=$(mktemp)
                     echo "$VAULT_CRED" > $TEMP_VAULT_FILE
                     ansible-playbook Deploy-ubuntu.yml -i inventory -e workspace=${WORKSPACE} --vault-password-file $TEMP_VAULT_FILE
