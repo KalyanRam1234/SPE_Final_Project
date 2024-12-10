@@ -37,5 +37,5 @@
       args:
         chdir: /home/{{ ansible_ssh_user }}/infra/
 
-    - name: Enable Ingress
-      shell: minikube addons enable ingress
+    # - name: Enable Ingress
+    #   shell: minikube addons enable ingress
