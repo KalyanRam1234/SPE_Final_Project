@@ -44,7 +44,10 @@ pipeline{
             steps {
                 script {
                     sh '''
-                    bash -c 'ansible-playbook Deploy-ubuntu.yml -i inventory -e workspace=${WORKSPACE} --vault-password-file <(echo "$VAULT_CRED")'                    
+                    TEMP_VAULT_FILE=$(mktemp)
+                    echo "$VAULT_CRED" > $TEMP_VAULT_FILE
+                    ansible-playbook Deploy-ubuntu.yml -i inventory -e workspace=${WORKSPACE} --vault-password-file $TEMP_VAULT_FILE
+                    rm -f $TEMP_VAULT_FILE
                     '''
                 }
             }
