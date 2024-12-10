@@ -13,8 +13,14 @@
     - name: Provide execution permission
       shell: chmod 777 /home/{{ ansible_ssh_user }}/infra/*.sh
 
+    - name: Check Minikube Status
+      shell: minikube status --format='{{.Host}}'
+      register: minikube_status
+      ignore_errors: true  # Ignore errors if Minikube isn't running
+      
     - name: Start minikube
       shell: minikube start --driver=docker
+      when: minikube_status.rc != 0
 
     - name: Cleanup all the existing deployments
       shell: ./cleanup.sh
