@@ -12,19 +12,19 @@ pipeline{
             }
         }
         
-        // stage("Stage 2: Docker Compose Build") {
-        //     steps {
-        //         echo 'Building Docker containers...'
-        //         sh 'docker-compose -p libraryapp build'
-        //     }
-        // }
+        stage("Stage 2: Docker Compose Build") {
+            steps {
+                echo 'Building Docker containers...'
+                sh 'docker-compose -p libraryapp build'
+            }
+        }
         
-        // stage("Stage 3 : Push to Dockerhub"){
-        //     steps{
-        //         sh 'echo $DOCKERHUB_CRED_PSW | docker login -u $DOCKERHUB_CRED_USR --password-stdin'
-        //         sh "docker-compose -p libraryapp push"
-        //     }
-        // }
+        stage("Stage 3 : Push to Dockerhub"){
+            steps{
+                sh 'echo $DOCKERHUB_CRED_PSW | docker login -u $DOCKERHUB_CRED_USR --password-stdin'
+                sh "docker-compose -p libraryapp push"
+            }
+        }
         
         stage("Stage 4 : Clean Unwanted Docker Images"){
             steps{
