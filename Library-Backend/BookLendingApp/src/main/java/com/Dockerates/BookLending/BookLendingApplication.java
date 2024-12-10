@@ -22,17 +22,15 @@ import com.Dockerates.BookLending.Service.UuidService;
 public class BookLendingApplication implements CommandLineRunner{
 
 
-	@Value("${appusername}")
-    private String username;
+	@Value("${spring.datasource.appusername}")
+    private String appusername;
 
-    @Value("${email}")
+    @Value("${spring.datasource.email}")
     private String email;
 
-    @Value("${apppassword}")
-    private String password;
+    @Value("${spring.datasource.apppassword}")
+    private String apppassword;
 
-    @Value("${role}")
-    private String role;
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -46,10 +44,10 @@ public class BookLendingApplication implements CommandLineRunner{
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         
         try {
-            String encodedPassword = passwordEncoder.encode(password);
+            String encodedPassword = passwordEncoder.encode(apppassword);
             User newUser = User.builder()
                 .id(UuidService.getUUID())
-                .username(username)
+                .username(appusername)
                 .email(email)
                 .password(encodedPassword)
                 .role(Role.ADMIN)  // Assuming role is an enum

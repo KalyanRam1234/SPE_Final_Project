@@ -1,0 +1,8 @@
+---
+- name: Copy Kubernetes infrastructure folders to target machine
+  copy:
+    src: "{{ workspace }}/infra/"  # Source folder
+    dest: "/home/{{ ansible_ssh_user }}/infra/" # Copy to Desktop 
+
+- name: Provide execution permission
+  shell: chmod 777 /home/{{ ansible_ssh_user }}/infra/*.sh
