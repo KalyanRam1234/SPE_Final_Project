@@ -1,0 +1,25 @@
+---
+- name: Pull Docker Image of Library App
+  hosts: all
+  
+  tasks:
+    - name: Copy Kubernetes infrastructure folders to target machine
+      copy:
+        src: "{{ workspace }}/infra/"  # Source folder
+        dest: "/Users/{{ ansible_ssh_user }}/infra/" # Copy to Desktop 
+
+    - name: Provide execution permission
+      shell: chmod 777 /Users/{{ ansible_ssh_user }}/infra/*.sh
+
+    - name: Start minikube
+      shell: minikube start
+    
+    - name: Cleanup all the existing deployments
+      shell: ./cleanup.sh
+      args:
+        chdir: /Users/{{ ansible_ssh_user }}/infra/
+
+    - name: Execute the script to deploy the application
+      shell: ./deploy.sh
+      args:
+        chdir: /Users/{{ ansible_ssh_user }}/infra/

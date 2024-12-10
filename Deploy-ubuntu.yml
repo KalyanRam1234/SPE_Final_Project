@@ -1,0 +1,10 @@
+---
+- name: Pull Docker Image of Library App
+  hosts: myhosts
+  vars_files:
+    - "{{ workspace }}/my_vault.yml"
+    
+  roles:
+    - ansible_role/initialization
+    - ansible_role/minikube
+    - ansible_role/deploy

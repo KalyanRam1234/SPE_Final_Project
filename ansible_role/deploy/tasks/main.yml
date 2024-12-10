@@ -1,0 +1,9 @@
+- name: Cleanup all the existing deployments
+  shell: ./cleanup.sh
+  args:
+    chdir: /home/{{ ansible_ssh_user }}/infra/
+
+- name: Execute the script to deploy the application
+  shell: ./deploy.sh
+  args:
+    chdir: /home/{{ ansible_ssh_user }}/infra/

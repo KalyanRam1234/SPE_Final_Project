@@ -2,6 +2,7 @@ package com.Dockerates.BookLending;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,6 +21,17 @@ import com.Dockerates.BookLending.Service.UuidService;
 @SpringBootApplication
 public class BookLendingApplication implements CommandLineRunner{
 
+
+	@Value("${spring.datasource.appusername}")
+    private String appusername;
+
+    @Value("${spring.datasource.email}")
+    private String email;
+
+    @Value("${spring.datasource.apppassword}")
+    private String apppassword;
+
+	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -28,24 +40,24 @@ public class BookLendingApplication implements CommandLineRunner{
 	}
 	
 	@Override
-    public void run(String... args) throws UserDuplicateEmailException{
-		PasswordEncoder passwordEncoder=new BCryptPasswordEncoder();
-		try{
-			String encodedPassword = passwordEncoder.encode("admin_password");
-			User newUser = User
-                .builder()
+    public void run(String... args) throws UserDuplicateEmailException {
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        
+        try {
+            String encodedPassword = passwordEncoder.encode(apppassword);
+            User newUser = User.builder()
                 .id(UuidService.getUUID())
-                .username("admin1")
-                .email("admin1@email.com")
+                .username(appusername)
+                .email(email)
                 .password(encodedPassword)
-                .role(Role.ADMIN)
+                .role(Role.ADMIN)  // Assuming role is an enum
                 .build();
-			
-			userRepository.save(newUser);
-		}catch(Exception ex){
-			System.out.println(ex.getMessage());
-		}
-	}
+
+            userRepository.save(newUser);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
@@ -53,7 +65,8 @@ public class BookLendingApplication implements CommandLineRunner{
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-					.allowedOrigins("http://frontend:5173", "http://localhost:5173", "http://localhost:5174")
+					.allowedOriginPatterns("*")
+					// .allowedOrigins("http://library-frontend-svc:5173","http://frontend.example.com","http://frontend:5173", "http://localhost:5173", "http://localhost:5174")
 					.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
 					.allowedHeaders("*")
 					.allowCredentials(true)

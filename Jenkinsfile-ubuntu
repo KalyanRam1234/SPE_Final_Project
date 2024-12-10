@@ -1,0 +1,67 @@
+pipeline{
+    environment{
+        DOCKERHUB_CRED = credentials("DockerHubCred")
+        GITHUB_REPO_URL = 'https://github.com/KalyanRam1234/SPE_Final_Project.git'
+        VAULT_CRED = credentials("VaultCred")
+    }
+    agent any
+    stages{
+        stage("Stage 1 : Git Clone"){
+            steps{
+                git branch : 'kalyankube', url : "${GITHUB_REPO_URL}"
+            }
+        }
+        
+        stage("Stage 2: Docker Compose Build") {
+            steps {
+                echo 'Building Docker containers...'
+                sh 'docker-compose -p libraryapp build'
+            }
+        }
+        
+        stage("Stage 3 : Push to Dockerhub"){
+            steps{
+                sh 'echo $DOCKERHUB_CRED_PSW | docker login -u $DOCKERHUB_CRED_USR --password-stdin'
+                sh "docker-compose -p libraryapp push"
+            }
+        }
+        
+        stage("Stage 4 : Clean Unwanted Docker Images"){
+            steps{
+                sh "docker-compose -p libraryapp down --rmi all --volumes --remove-orphans"
+            }
+        }
+
+        stage("Stage 5: Prepare Docker Compose File") {
+            steps {
+                archiveArtifacts artifacts: 'infra/** , my_vault.yml', allowEmptyArchive: false
+                sh 'echo "Workspace location is $WORKSPACE"'
+                sh 'ls -l $WORKSPACE' 
+            }
+        }
+        
+        stage('Stage 6: Ansible Deployment') {
+            steps {
+                script {
+                    sh '''
+                    export ANSIBLE_HOST_KEY_CHECKING=False
+                    TEMP_VAULT_FILE=$(mktemp)
+                    echo "$VAULT_CRED" > $TEMP_VAULT_FILE
+                    ansible-playbook Deploy-ubuntu.yml -i inventory -e workspace=${WORKSPACE} --vault-password-file $TEMP_VAULT_FILE
+                    rm -f $TEMP_VAULT_FILE
+                    '''
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed. Cleaning up resources...'
+            sh "docker-compose -p libraryapp down --rmi all --volumes --remove-orphans || true"
+        }
+    }
+}

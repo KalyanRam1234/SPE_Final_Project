@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: booklendingapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: booklendingapp
+  template:
+    metadata:
+      labels:
+        app: booklendingapp
+    spec:
+      containers:
+      - name: booklendingapp
+        image: kalyanramm237/booklendingapp:latest
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-app-secrets
+              key: MYSQL_ROOT_PASSWORD
+        - name: MYSQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: mysql-app-secrets
+              key: MYSQL_DATABASE
+        - name: MYSQL_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-app-secrets
+              key: MYSQL_ROOT_USERNAME
+        - name: APP_ADMIN_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-app-secrets
+              key: APP_ADMIN_USERNAME
+        - name: APP_ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-app-secrets
+              key: APP_ADMIN_PASSWORD
+        - name: APP_ADMIN_EMAIL
+          valueFrom:
+            secretKeyRef:
+              name: mysql-app-secrets
+              key: APP_ADMIN_EMAIL
+        ports:
+        - containerPort: 5001
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 500m
+            memory: 256Mi
