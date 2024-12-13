@@ -78,8 +78,8 @@ helm install loki grafana/loki-stack \
   --set loki.resources.limits.cpu="1" \
   --set loki.resources.limits.memory="2Gi" \
   --set promtail.resources.requests.cpu="400m" \
-  --set promtail.resources.requests.memory="512Mi" \
+  --set promtail.resources.requests.memory="1Gi" \
   --set promtail.resources.limits.cpu="800m" \
-  --set promtail.resources.limits.memory="1Gi"
+  --set promtail.resources.limits.memory="1.5Gi"
 
 kubectl get secret loki-grafana -n monitoring -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
