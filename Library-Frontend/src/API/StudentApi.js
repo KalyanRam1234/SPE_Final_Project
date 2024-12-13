@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BookLendingAppUrl="http://booklendingapp.example.com"
+const BookLendingAppUrl="http://booklendingapp.example.com:32001"
 
 // Creating an axios instance that enables sending and receiving cookies along with the HTTP requests. 
 const axiosInstance = axios.create({

@@ -38,5 +38,5 @@ spec:
             cpu: 500m
             memory: 512Mi
           requests:
-            cpu: 500m
+            cpu: 400m
             memory: 256Mi

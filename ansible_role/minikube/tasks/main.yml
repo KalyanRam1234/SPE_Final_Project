@@ -4,5 +4,5 @@
   ignore_errors: true  # Ignore errors if Minikube isn't running
   
 - name: Start minikube
-  shell: minikube start --driver=docker
+  shell: minikube start --driver=docker --addons=ingress
   when: minikube_status.rc != 0
