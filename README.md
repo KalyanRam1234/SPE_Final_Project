@@ -18,4 +18,4 @@ kubectl port-forward service/loki-grafana 8081:80 -n monitoring
 
 Monitoring done using Prometheus and Logging done using Grafana and Loki
 
-The Further details on the microservices can be found in the Readmes' of the respective directory. Feel free to go over them
+The Further details on the microservices can be found in the Readmes' of the respective directory. Feel free to go over them.
