@@ -19,9 +19,9 @@ helm install loki grafana/loki-stack \
   --set promtail.config.scrape_configs[0].relabel_configs[3].target_label="pod" \
   --set grafana.enabled=true \
   --set prometheus.enabled=true \
-  --set loki.resources.requests.cpu="600m" \
-  --set loki.resources.requests.memory="1Gi" \
-  --set loki.resources.limits.cpu="1" \
+  --set loki.resources.requests.cpu="800m" \
+  --set loki.resources.requests.memory="1.5Gi" \
+  --set loki.resources.limits.cpu="1500m" \
   --set loki.resources.limits.memory="2Gi" \
   --set promtail.resources.requests.cpu="400m" \
   --set promtail.resources.requests.memory="1Gi" \
