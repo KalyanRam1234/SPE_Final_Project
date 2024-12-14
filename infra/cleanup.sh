@@ -20,3 +20,5 @@ kubectl delete svc library-frontend-svc || true
 kubectl delete svc mysql || true
 kubectl delete svc prometheus-service -n monitoring || true
 kubectl delete svc kube-state-metrics -n kube-system || true
+
+helm uninstall loki --namespace monitoring
