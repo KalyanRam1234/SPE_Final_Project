@@ -9,7 +9,7 @@ kubectl apply -f frontend-infra
 # kubectl apply -f ingress-infra
 
 kubectl apply -f prometheus
-kubectl apply -f kube-state-metrics-configs
+# kubectl apply -f kube-state-metrics-configs
 
 kubectl apply -f ingress-infra/prometheus-ingress.yaml
 kubectl apply -f ingress-infra/frontend-ingress.yaml
